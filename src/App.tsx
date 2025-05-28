@@ -1,10 +1,10 @@
 import CriptoSearch from "./components/CriptoSearch.tsx";
-import {useCriptoStore} from "./store/store.ts";
+import {useCryptoStore} from "./store/store.ts";
 import {useEffect} from "react";
 
 const App = () => {
 
-  const fetchCryptos = useCriptoStore(state => state.fetchCryptos)
+  const fetchCryptos = useCryptoStore(state => state.fetchCryptos)
 
   useEffect(() => {
     fetchCryptos()
