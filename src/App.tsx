@@ -1,3 +1,5 @@
+import CriptoSearch from "./components/CriptoSearch.tsx";
+
 const App = () => {
   return (
     <>
@@ -6,7 +8,7 @@ const App = () => {
           Cotizador de <span>Criptomonedas</span>
         </h1>
         <div className="content">
-
+          <CriptoSearch/>
         </div>
       </div>
     </>
