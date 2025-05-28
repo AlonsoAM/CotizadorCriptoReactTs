@@ -7,6 +7,8 @@ import ErrorMessage from "./ErrorMessage.tsx";
 const CriptoSearch = () => {
 
   const cryptoCurrencies = useCryptoStore(state => state.cryptoCurrencies)
+  const fetchData = useCryptoStore(state => state.fetchData)
+
   const [pair, setPair] = useState<Pair>({
     currency: '',
     cripto_currency: ''
@@ -14,7 +16,7 @@ const CriptoSearch = () => {
 
   const [error, setError] = useState('');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (Object.values(pair).includes('')) {
       setError('Todos los campos son obligatorios')
@@ -22,6 +24,7 @@ const CriptoSearch = () => {
     }
     setError('')
     // Consultar la API
+    await fetchData(pair)
   }
 
   return (
