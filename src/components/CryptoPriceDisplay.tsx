@@ -6,11 +6,18 @@ const CryptoPriceDisplay = () => {
 
   const result = useCryptoStore(state => state.result)
   const loading = useCryptoStore(state => state.loading)
-  const hasResult = useMemo(() => Object.values(result).includes(''), [result])
+  const hasResult = useMemo(() => {
+    return result.PRICE &&
+      result.IMAGEURL &&
+      result.HIGHDAY &&
+      result.LOWDAY &&
+      result.CHANGEPCT24HOUR &&
+      result.LASTUPDATE;
+  }, [result])
 
   return (
     <div className={'result-wrapper'}>
-      {loading ? <Spinner/> : !hasResult && (
+      {loading ? <Spinner/> : hasResult && (
         <>
           <h2>Cotización</h2>
           <div className={'result'}>
